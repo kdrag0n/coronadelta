@@ -1,4 +1,5 @@
 <script>
+    import Tailwindcss from '../components/Tailwindcss.svelte';
     import Nav from '../components/Nav.svelte';
 
     export let segment;
@@ -12,6 +13,8 @@
         box-sizing: border-box;
     }
 </style>
+
+<Tailwindcss />
 
 <Nav {segment}/>
 
