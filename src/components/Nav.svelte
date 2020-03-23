@@ -25,8 +25,8 @@
 
 <nav>
 	<ul>
-		<NavLink {segment} slug='home' link='.'/>
+		<NavLink {segment} slug='stats' link='.'/>
+		<NavLink {segment} slug='explanation'/>
 		<NavLink {segment} slug='about'/>
-		<NavLink {segment} slug='blog'/>
 	</ul>
 </nav>

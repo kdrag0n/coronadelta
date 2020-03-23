@@ -1,5 +1,5 @@
 <svelte:head>
-	<title>COVID-19 Growth</title>
+	<title>Why Growth Factor Matters</title>
 </svelte:head>
 
 <script>
@@ -18,8 +18,10 @@
 	};
 </script>
 
-<h1>At a glance</h1>
-
-<p>There are <strong>{cases}</strong> cases worldwide, currently growing at a factor of <strong>{factor}</strong>.</p>
+<p>This is the number of cases worldwide since December 31, 2019.</p>
 
 <Chart data={data} type="line" />
+
+<p>But that doesn't tell the full story.</p>
+
+<p>In exponential growth, ...</p>
