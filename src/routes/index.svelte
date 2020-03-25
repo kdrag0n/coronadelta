@@ -4,7 +4,7 @@
 
 <script>
 	import { onMount } from 'svelte';
-	import ChartXkcd from '../components/ChartXkcd.svelte';
+	import TuiChart from '../components/TuiChart.svelte';
 
 	let cases = 5;
 	let factor = 1.2;
@@ -41,13 +41,13 @@
 
 		let totalCases = data.cases.absolute.Total;
 		absData = {
-			labels: dateLabels,
-			datasets: [
-				{ label: "Total", data: data.cases.absolute.Total },
-				{ label: "China", data: data.cases.absolute.China },
-				{ label: "Iran", data: data.cases.absolute.Iran },
-				{ label: "Italy", data: data.cases.absolute.Italy },
-				{ label: "United States", data: data.cases.absolute["United States"] },
+			categories: dateLabels,
+			series: [
+				{ name: "Total", data: data.cases.absolute.Total },
+				{ name: "China", data: data.cases.absolute.China },
+				{ name: "Iran", data: data.cases.absolute.Iran },
+				{ name: "Italy", data: data.cases.absolute.Italy },
+				{ name: "United States", data: data.cases.absolute["United States"] },
 			]
 		};
 		/*grwData = {
@@ -73,13 +73,13 @@
 <p>There have been <strong>{cases}</strong> confirmed cases worldwide across <strong>{nCountries}</strong> countries.</p>
 
 {#if absData !== undefined}
-<ChartXkcd
-	title="Global confirmed cases"
-	xLabel="Date"
-	yLabel="Cases"
+<TuiChart
 	data={absData}
 	options={{
-		unxkcdify: true
+		chart: { title: "Global confirmed cases", width: 960 },
+		yAxis: { title: "Cases" },
+		xAxis: { title: "Date", tickInterval: "auto" },
+		series: { zoomable: true }
 	}} />
 {/if}
 

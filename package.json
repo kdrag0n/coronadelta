@@ -12,10 +12,10 @@
     "test": "run-p --race dev cy:run"
   },
   "dependencies": {
-    "chart.xkcd": "^1.1.13",
     "compression": "^1.7.1",
     "polka": "next",
-    "sirv": "^0.4.0"
+    "sirv": "^0.4.0",
+    "tui-chart": "^3.10.2"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
