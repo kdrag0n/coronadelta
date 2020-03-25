@@ -1,5 +1,5 @@
 <svelte:head>
-	<title>Why Growth Factor Matters</title>
+    <title>Why Growth Factor Matters</title>
 </svelte:head>
 
 <p>This is the number of cases worldwide since December 31, 2019.</p>
