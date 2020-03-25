@@ -4,7 +4,7 @@
 
 <script>
 	import { onMount } from 'svelte';
-	import TuiChart from '../components/TuiChart.svelte';
+	import C3Chart from '../components/C3Chart.svelte';
 
 	let cases = 5;
 	let factor = 1.2;
@@ -41,13 +41,15 @@
 
 		let totalCases = data.cases.absolute.Total;
 		absData = {
-			categories: dateLabels,
-			series: [
-				{ name: "Total", data: data.cases.absolute.Total },
-				{ name: "China", data: data.cases.absolute.China },
-				{ name: "Iran", data: data.cases.absolute.Iran },
-				{ name: "Italy", data: data.cases.absolute.Italy },
-				{ name: "United States", data: data.cases.absolute["United States"] },
+			x: "x",
+			xFormat: "%m/%d/%Y",
+			columns: [
+				["x", ...dateLabels],
+				["Total", ...data.cases.absolute.Total],
+				["China", ...data.cases.absolute.China],
+				["Iran", ...data.cases.absolute.Iran],
+				["Italy", ...data.cases.absolute.Italy],
+				["United States", ...data.cases.absolute["United States"]],
 			]
 		};
 		/*grwData = {
@@ -73,14 +75,8 @@
 <p>There have been <strong>{cases}</strong> confirmed cases worldwide across <strong>{nCountries}</strong> countries.</p>
 
 {#if absData !== undefined}
-<TuiChart
-	data={absData}
-	options={{
-		chart: { title: "Global confirmed cases", width: 960 },
-		yAxis: { title: "Cases" },
-		xAxis: { title: "Date", tickInterval: "auto" },
-		series: { zoomable: true }
-	}} />
+<C3Chart
+	data={absData} />
 {/if}
 
 <p>Case numbers are currently growing at a factor of <strong>{factor.toFixed(2)}</strong>.</p>
