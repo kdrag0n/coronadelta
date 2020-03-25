@@ -6,31 +6,32 @@
 </script>
 
 <style>
-	li {
-		display: block;
-		float: left;
-	}
+    li {
+        display: block;
+        float: left;
+    }
 
-	[aria-current] {
-		position: relative;
-		display: inline-block;
-	}
+    [aria-current] {
+        position: relative;
+        display: inline-block;
+        font-weight: 700;
+    }
 
-	[aria-current]::after {
-		position: absolute;
-		content: '';
-		width: calc(100% - 1em);
-		height: 2px;
-		background-color: rgb(255,62,0);
-		display: block;
-		bottom: -1px;
-	}
+    [aria-current]::after {
+        position: absolute;
+        content: '';
+        width: calc(100% - 1em);
+        height: 2px;
+        background-color: rgb(255,62,0);
+        display: block;
+        bottom: -1px;
+    }
 
-	a {
-		text-decoration: none;
-		padding: 1em 0.5em;
-		display: block;
-	}
+    a {
+        text-decoration: none;
+        padding: 1em 0.5em;
+        display: block;
+    }
 </style>
 
 <li>

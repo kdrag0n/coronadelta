@@ -22,9 +22,9 @@
     export let axis = {
         x: {
             type: "timeseries",
-			tick: {
-				format: formatDate
-			}
+            tick: {
+                format: formatDate
+            }
         }
     };
     export let point = {

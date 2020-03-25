@@ -65,8 +65,6 @@
 	});
 </script>
 
-<h1>At a glance</h1>
-
 <p>There have been <strong>{cases}</strong> confirmed cases worldwide across <strong>{nCountries}</strong> countries.</p>
 
 {#if absData !== undefined}
