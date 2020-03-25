@@ -4,7 +4,7 @@
 
 <script>
 	import { onMount } from 'svelte';
-	import C3Chart from '../components/C3Chart.svelte';
+	import Chart from '../components/Chart.svelte';
 
 	let cases = 5;
 	let factor = 1.2;
@@ -75,7 +75,7 @@
 <p>There have been <strong>{cases}</strong> confirmed cases worldwide across <strong>{nCountries}</strong> countries.</p>
 
 {#if absData !== undefined}
-<C3Chart
+<Chart
 	data={absData} />
 {/if}
 

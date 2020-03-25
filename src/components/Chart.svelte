@@ -1,5 +1,5 @@
 <svelte:head>
-    <link rel="stylesheet" href="c3.min.css">
+    <link rel="stylesheet" href="/c3.min.css">
 </svelte:head>
 
 <style>
