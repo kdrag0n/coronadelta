@@ -12,9 +12,8 @@
     "test": "run-p --race dev cy:run"
   },
   "dependencies": {
-    "britecharts": "^2.13.2",
+    "chart.xkcd": "^1.1.13",
     "compression": "^1.7.1",
-    "d3-selection": "^1.4.1",
     "polka": "next",
     "sirv": "^0.4.0"
   },

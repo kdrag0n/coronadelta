@@ -4,7 +4,7 @@
 
 <script>
 	import { onMount } from 'svelte';
-	import LineChart from '../components/LineChart.svelte';
+	import ChartXkcd from '../components/ChartXkcd.svelte';
 
 	let cases = 5;
 	let factor = 1.2;
@@ -36,37 +36,18 @@
 		for (let offset = 0; offset < nDays; offset++) {
 			let date = new Date(startDate);
 			date.setDate(startDate.getDate() + offset);
-			dateLabels.push(date.toISOString().replace(".000Z", "+01:00"));
+			dateLabels.push(date.toLocaleDateString());
 		}
 
 		let totalCases = data.cases.absolute.Total;
 		absData = {
-			dataByTopic: [
-				{
-					topicName: "Total",
-					topic: 1,
-					dates: valuesToEntries(data.cases.absolute.Total)
-				},
-				{
-					topicName: "China",
-					topic: 2,
-					dates: valuesToEntries(data.cases.absolute.China)
-				},
-				{
-					topicName: "Italy",
-					topic: 3,
-					dates: valuesToEntries(data.cases.absolute.Italy)
-				},
-				{
-					topicName: "Iran",
-					topic: 1,
-					dates: valuesToEntries(data.cases.absolute.Iran)
-				},
-				{
-					topicName: "United States",
-					topic: 1,
-					dates: valuesToEntries(data.cases.absolute["United States"])
-				}
+			labels: dateLabels,
+			datasets: [
+				{ label: "Total", data: data.cases.absolute.Total },
+				{ label: "China", data: data.cases.absolute.China },
+				{ label: "Iran", data: data.cases.absolute.Iran },
+				{ label: "Italy", data: data.cases.absolute.Italy },
+				{ label: "United States", data: data.cases.absolute["United States"] },
 			]
 		};
 		/*grwData = {
@@ -92,13 +73,21 @@
 <p>There have been <strong>{cases}</strong> confirmed cases worldwide across <strong>{nCountries}</strong> countries.</p>
 
 {#if absData !== undefined}
-<LineChart
-	data={absData} />
+<ChartXkcd
+	title="Global confirmed cases"
+	xLabel="Date"
+	yLabel="Cases"
+	data={absData}
+	options={{
+		unxkcdify: true
+	}} />
 {/if}
 
 <p>Case numbers are currently growing at a factor of <strong>{factor.toFixed(2)}</strong>.</p>
 
+<!--
 {#if grwData !== undefined}
 <LineChart
 	data={grwData} />
 {/if}
+-->
