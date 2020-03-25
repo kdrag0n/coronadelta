@@ -13,17 +13,14 @@
 	let nCountries;
 	let dateLabels = [];
 
-	function valuesToEntries(values) {
-		let entries = [];
-
-		for (let i = 0; i < values.length; i++) {
-			entries.push({
-				date: dateLabels[i],
-				value: values[i]
-			});
+	function formatDate(date) {
+		let options = { month: "numeric", day: "numeric" };
+		let now = new Date();
+		if (date.getFullYear() != now.getFullYear()) {
+			options.year = "numeric";
 		}
 
-		return entries;
+		return date.toLocaleDateString(undefined, options);
 	}
 
 	onMount(async () => {
@@ -31,18 +28,17 @@
 		let data = await resp.json();
 
 		nCountries = data.cases.absolute.length;
-		let startDate = new Date("2019-12-31T10:00:00+01:00");
+		let startDate = new Date(data.dates.start);
 		let nDays = data.dates.count;
 		for (let offset = 0; offset < nDays; offset++) {
 			let date = new Date(startDate);
 			date.setDate(startDate.getDate() + offset);
-			dateLabels.push(date.toLocaleDateString());
+			dateLabels.push(date);
 		}
 
 		let totalCases = data.cases.absolute.Total;
 		absData = {
 			x: "x",
-			xFormat: "%m/%d/%Y",
 			columns: [
 				["x", ...dateLabels],
 				["Total", ...data.cases.absolute.Total],
@@ -52,18 +48,17 @@
 				["United States", ...data.cases.absolute["United States"]],
 			]
 		};
-		/*grwData = {
-			labels: labels,
-			datasets: [
-				{ name: "Total", values: data.cases.growth.Total },
-				{ name: "China", values: data.cases.growth.China },
-				{ name: "Iran", values: data.cases.growth.Iran },
-				{ name: "United States", values: data.cases.growth["United States"] },
-			],
-			yMarkers: [
-				{ label: "", value: 1 }
+		grwData = {
+			x: "x",
+			columns: [
+				["x", ...dateLabels],
+				["Total", ...data.cases.growth.Total],
+				["China", ...data.cases.growth.China],
+				["Iran", ...data.cases.growth.Iran],
+				["Italy", ...data.cases.growth.Italy],
+				["United States", ...data.cases.growth["United States"]],
 			]
-		};*/
+		};
 
 		cases = totalCases[totalCases.length - 1];
 		factor = data.cases.growth.Total[data.cases.growth.Total.length - 1];
@@ -75,15 +70,40 @@
 <p>There have been <strong>{cases}</strong> confirmed cases worldwide across <strong>{nCountries}</strong> countries.</p>
 
 {#if absData !== undefined}
-<Chart
-	data={absData} />
+<Chart data={absData}
+	axis={{
+        x: {
+			label: "Date",
+            type: "timeseries",
+			tick: {
+				format: formatDate
+			}
+        },
+		y: {
+			label: "Cases"
+		}
+    }} />
 {/if}
 
 <p>Case numbers are currently growing at a factor of <strong>{factor.toFixed(2)}</strong>.</p>
 
-<!--
 {#if grwData !== undefined}
-<LineChart
-	data={grwData} />
+<Chart data={grwData}
+	axis={{
+        x: {
+			label: "Date",
+            type: "timeseries",
+			tick: {
+				format: formatDate
+			}
+        },
+		y: {
+			label: "Growth Factor"
+		}
+    }}
+	regions={[{
+		axis: "y",
+		start: 0,
+		end: 1,
+	}]} />
 {/if}
--->
