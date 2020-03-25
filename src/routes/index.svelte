@@ -14,13 +14,7 @@
     let dateLabels = [];
 
     function formatDate(date) {
-        let options = { month: "numeric", day: "numeric" };
-        let now = new Date();
-        if (date.getFullYear() != now.getFullYear()) {
-            options.year = "numeric";
-        }
-
-        return date.toLocaleDateString(undefined, options);
+        return date.toLocaleDateString(undefined, { month: "numeric", day: "numeric" });
     }
 
     onMount(async () => {
