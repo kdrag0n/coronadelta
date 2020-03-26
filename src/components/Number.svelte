@@ -10,6 +10,8 @@
 
 <script>
     export let n;
+    let extraClass;
+    export { extraClass as class };
 </script>
 
-<span class="text-2xl font-number font-bold">{n.toLocaleString()}</span>
+<span class="text-2xl font-number font-bold {extraClass}">{n.toLocaleString()}</span>
