@@ -14,4 +14,4 @@
     export { extraClass as class };
 </script>
 
-<span class="text-2xl font-number font-bold {extraClass}">{n.toLocaleString()}</span>
+<span class="text-2xl font-number font-bold {extraClass}">{n.toLocaleString()}&nbsp;</span>
