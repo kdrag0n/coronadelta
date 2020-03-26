@@ -22,7 +22,7 @@
         for (let offset = 0; offset < nDays; offset++) {
             let date = new Date(startDate);
             date.setDate(startDate.getDate() + offset);
-            dateLabels.push(formatDate(date));
+            dateLabels.push(date);
 		}
 		
 		data = _data;

@@ -19,6 +19,7 @@
 <script>
     import { onMount, onDestroy } from 'svelte';
     import Chart from 'chart.js';
+
     import tailwindTheme from 'tailwindcss/defaultTheme';
     const colors = tailwindTheme.colors;
     const chartColors = ["gray", "red", "orange", "yellow", "green", "blue", "purple", "pink"];
@@ -38,6 +39,7 @@
     onMount(async () => {
         canvas.width = width * window.devicePixelRatio;
         canvas.height = height * window.devicePixelRatio;
+        await import('chartjs-plugin-zoom');
 
         chart = new Chart(canvas, {
             type: type,
@@ -54,11 +56,6 @@
                     yPadding: 10,
                     caretPadding: 10
                 },
-                legend: {
-                    labels: {
-                        fontFamily: "Inter"
-                    }
-                },
                 animation: {
                     duration: 0 // general animation time
                 },
@@ -68,6 +65,10 @@
                 responsiveAnimationDuration: 0, // animation duration after a resize
                 scales: {
                     xAxes: [{
+                        type: "time",
+                        time: {
+                            unit: "day"
+                        },
                         ticks: {
                             minRotation: 0,
                             maxRotation: 0
@@ -82,9 +83,22 @@
                 legend: {
                     position: "bottom",
                     labels: {
+                        fontFamily: "Inter",
                         boxWidth: 12 // bound to font size
                     }
                 },
+                plugins: {
+                    zoom: {
+                        pan: {
+                            enabled: false
+                        },
+                        zoom: {
+                            enabled: true,
+                            drag: true,
+                            mode: "x"
+                        }
+                    }
+                }
             }
         })
     });
