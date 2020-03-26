@@ -24,7 +24,7 @@
     import { onMount, onDestroy } from 'svelte';
     import tailwindTheme from 'tailwindcss/defaultTheme';
     const colors = tailwindTheme.colors;
-    const chartColors = ["gray", "red", "orange", "yellow", "green", "teal", "blue", "indigo", "purple", "pink"];
+    const chartColors = ["gray", "red", "orange", "yellow", "green", "blue", "purple", "pink"];
 
     function formatDate(date) {
         return date.toLocaleDateString(undefined, { month: "numeric", day: "numeric" });
