@@ -15,6 +15,10 @@
 <script>
     import { onMount, onDestroy } from 'svelte';
 
+    function formatDate(date) {
+        return date.toLocaleDateString(undefined, { month: "numeric", day: "numeric" });
+    }
+
     let container;
     let chart;
     export let width, height;
