@@ -93,21 +93,21 @@
 
 <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
 	<div class="shadow-card rounded-lg p-4 lg:p-6 bg-white">
-		<center><Number n={cases} class="text-orange-600" />cases</center>
+		<Number n={cases} class="text-orange-600" label="cases" />
 		{#if absData !== undefined}
 			<Chart data={absData} />
 		{/if}
 	</div>
 
 	<div class="shadow-card rounded-lg p-4 lg:p-6 bg-white">
-		<center><Number n={newCases} class="text-orange-600" />new cases</center>
+		<Number n={newCases} class="text-orange-600" label="new cases" />
 		{#if relData !== undefined}
 			<Chart data={relData} />
 		{/if}
 	</div>
 
 	<div class="shadow-card rounded-lg p-4 lg:p-6 bg-white">
-		<center><Number n={factor} class="text-orange-600" />case growth factor</center>
+		<Number n={factor} class="text-orange-600" label="case growth factor" />
 		{#if grwData !== undefined}
 		<Chart data={grwData}
 			regions={[{
@@ -119,21 +119,21 @@
 	</div>
 
 	<div class="shadow-card rounded-lg p-4 lg:p-6 bg-white">
-		<center><Number n={deaths} class="text-red-600" />deaths</center>
+		<Number n={deaths} class="text-red-600" label="deaths" />
 		{#if deaData !== undefined}
 			<Chart data={deaData} />
 		{/if}
 	</div>
 
 	<div class="shadow-card rounded-lg p-4 lg:p-6 bg-white">
-		<center><Number n={deaths} class="text-red-600" />new deaths</center>
+		<Number n={deaths} class="text-red-600" label="new deaths" />
 		{#if deaData !== undefined}
 			<Chart data={deaData} />
 		{/if}
 	</div>
 
 	<div class="shadow-card rounded-lg p-4 lg:p-6 bg-white">
-		<center><Number n={deaths} class="text-red-600" />death growth factor</center>
+		<Number n={deaths} class="text-red-600" label="death growth factor" />
 		{#if deaData !== undefined}
 			<Chart data={deaData} />
 		{/if}
