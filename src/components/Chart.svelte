@@ -39,7 +39,6 @@
     onMount(async () => {
         canvas.width = width * window.devicePixelRatio;
         canvas.height = height * window.devicePixelRatio;
-        await import('chartjs-plugin-zoom');
 
         chart = new Chart(canvas, {
             type: type,
@@ -85,18 +84,6 @@
                     labels: {
                         fontFamily: "Inter",
                         boxWidth: 12 // bound to font size
-                    }
-                },
-                plugins: {
-                    zoom: {
-                        pan: {
-                            enabled: false
-                        },
-                        zoom: {
-                            enabled: true,
-                            drag: true,
-                            mode: "x"
-                        }
                     }
                 }
             }
