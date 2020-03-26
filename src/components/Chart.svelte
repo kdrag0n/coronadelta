@@ -22,15 +22,27 @@
 
 <script>
     import { onMount, onDestroy } from 'svelte';
+    import tailwindTheme from 'tailwindcss/defaultTheme';
+    const colors = tailwindTheme.colors;
+    const chartColors = ["gray", "red", "orange", "yellow", "green", "teal", "blue", "indigo", "purple", "pink"];
 
     function formatDate(date) {
         return date.toLocaleDateString(undefined, { month: "numeric", day: "numeric" });
+    }
+
+    function getColors() {
+        let chColors = [];
+        chartColors.forEach(colorName => chColors.push(colors[colorName]["600"]))
+        return chColors;
     }
 
     let container;
     let chart;
     export let width = undefined, height = undefined;
     export let data;
+    export let color = {
+        pattern: getColors()
+    };
     export let axis = {
         x: {
             type: "timeseries",
@@ -77,9 +89,7 @@
     export let stanford = undefined;
 
     function calcTickCount() {
-        let val = Math.floor(window.innerWidth < 768 ? window.innerWidth / 100 : window.innerWidth / 200);
-        console.log(window.innerWidth, val)
-        return val;
+        return Math.floor(window.innerWidth < 768 ? window.innerWidth / 100 : window.innerWidth / 200);
     }
 
     onMount(async () => {
@@ -88,6 +98,7 @@
         axis.x.tick.culling.max = calcTickCount();
         chart = c3.generate({
             bindto: container,
+            color: color,
             size: {
                 width: width,
                 height: height
