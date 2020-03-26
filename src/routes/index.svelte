@@ -5,11 +5,12 @@
 
 <script>
     import { onMount } from 'svelte';
-    import Chart from '../components/Chart.svelte';
+	import Chart from '../components/Chart.svelte';
+	import Number from '../components/Number.svelte';
 
-	let cases = 5;
-	let deaths;
-	let newCases;
+	let cases = 0;
+	let deaths = 0;
+	let newCases = 0;
     let factor = 1.2;
     let absData;
     let grwData;
@@ -84,32 +85,36 @@
     });
 </script>
 
-<r-grid columns=2>
-	<r-cell>
-		<center><h1>{cases}</h1> confirmed cases</center>
+<style>
+	.shadow-card {
+		box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+	}
+</style>
+
+<div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+	<div class="shadow-card rounded-lg p-4 lg:p-6 bg-white">
+		<center><Number n={cases} /> cases</center>
 		{#if absData !== undefined}
 			<Chart data={absData} />
 		{/if}
-		<center>in <h3>{nCountries}</h3> countries</center>
-	</r-cell>
+	</div>
 
-	<r-cell>
-		<center><h1>{deaths}</h1> deaths</center>
+	<div class="shadow-card rounded-lg p-4 lg:p-6 bg-white">
+		<center><Number n={deaths} /> deaths</center>
 		{#if deaData !== undefined}
 			<Chart data={deaData} />
 		{/if}
-	</r-cell>
+	</div>
 
-	<r-cell>
-		<center><h1>{newCases}</h1> new cases <b>today</b></center>
+	<div class="shadow-card rounded-lg p-4 lg:p-6 bg-white">
+		<center><Number n={newCases} /> new cases</center>
 		{#if relData !== undefined}
 			<Chart data={relData} />
 		{/if}
-		<center>in <h3>{nCountries}</h3> countries</center>
-	</r-cell>
+	</div>
 
-	<r-cell>
-		<center><h1>{factor.toFixed(2)}</h1> growth factor</center>
+	<div class="shadow-card rounded-lg p-4 lg:p-6 bg-white">
+		<center><Number n={factor} /> growth factor</center>
 		{#if grwData !== undefined}
 		<Chart data={grwData}
 			regions={[{
@@ -118,5 +123,5 @@
 				end: 1,
 			}]} />
 		{/if}
-	</r-cell>
-</r-grid>
+	</div>
+</div>

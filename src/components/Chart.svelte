@@ -10,6 +10,10 @@
     :global(.c3-event-rects) {
         cursor: auto !important;
     }
+
+    :global(.c3-grid line) {
+        stroke: #ccc !important;
+    }
 </style>
 
 <script>
@@ -21,13 +25,16 @@
 
     let container;
     let chart;
-    export let width, height;
+    export let width = undefined, height = undefined;
     export let data;
     export let axis = {
         x: {
             type: "timeseries",
             tick: {
-                format: formatDate
+                format: formatDate,
+                culling: {
+                    max: 10
+                }
             }
         }
     };
@@ -52,22 +59,29 @@
             show: true
         }
     };
-    export let regions;
-    export let legend;
-    export let tooltip;
-    export let subchart;
-    export let line;
-    export let area;
-    export let bar;
-    export let pie;
-    export let donut;
-    export let gauge;
-    export let spline;
-    export let stanford;
+    export let regions = undefined;
+    export let legend = undefined;
+    export let tooltip = undefined;
+    export let subchart = undefined;
+    export let line = undefined;
+    export let area = undefined;
+    export let bar = undefined;
+    export let pie = undefined;
+    export let donut = undefined;
+    export let gauge = undefined;
+    export let spline = undefined;
+    export let stanford = undefined;
+
+    function calcTickCount() {
+        let val = Math.floor(window.innerWidth < 768 ? window.innerWidth / 100 : window.innerWidth / 200);
+        console.log(window.innerWidth, val)
+        return val;
+    }
 
     onMount(async () => {
         const module = await import("c3");
         const c3 = module.default;
+        axis.x.tick.culling.max = calcTickCount();
         chart = c3.generate({
             bindto: container,
             size: {
@@ -91,7 +105,7 @@
             gauge: gauge,
             spline: spline,
             stanford: stanford
-        })
+        });
     });
 
     //afterUpdate(() => chart.update(data));
