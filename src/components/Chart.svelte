@@ -64,10 +64,6 @@
                 responsiveAnimationDuration: 0, // animation duration after a resize
                 scales: {
                     xAxes: [{
-                        type: "time",
-                        time: {
-                            unit: "day"
-                        },
                         ticks: {
                             minRotation: 0,
                             maxRotation: 0
