@@ -2,20 +2,20 @@
     <link rel="stylesheet" href="/lib/c3.min.css">
 </svelte:head>
 
-<style>
-    :global(.c3-line) {
+<style global>
+    .c3-line {
         stroke-width: 2px !important;
     }
 
-    :global(.c3-event-rects) {
+    .c3-event-rects, .c3-event-rect {
         cursor: auto !important;
     }
 
-    :global(.c3-grid line) {
+    .c3-grid line {
         stroke: #ccc !important;
     }
 
-    :global(.c3-circles circle:not(._expanded_)) {
+    .c3-circles circle:not(._expanded_) {
         display: none !important;
     }
 </style>
