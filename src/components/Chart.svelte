@@ -14,6 +14,10 @@
     :global(.c3-grid line) {
         stroke: #ccc !important;
     }
+
+    :global(.c3-circles circle:not(._expanded_)) {
+        display: none !important;
+    }
 </style>
 
 <script>
