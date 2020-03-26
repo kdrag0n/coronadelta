@@ -9,6 +9,10 @@
 	let data;
 	let dateLabels = [];
 
+    function formatDate(date) {
+        return date.toLocaleDateString(undefined, { month: "numeric", day: "numeric" });
+    }
+
     onMount(async () => {
         let resp = await fetch("/ecdc.json");
         let _data = await resp.json();
@@ -18,7 +22,7 @@
         for (let offset = 0; offset < nDays; offset++) {
             let date = new Date(startDate);
             date.setDate(startDate.getDate() + offset);
-            dateLabels.push(date);
+            dateLabels.push(formatDate(date));
 		}
 		
 		data = _data;

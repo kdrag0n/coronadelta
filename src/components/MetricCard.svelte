@@ -2,6 +2,12 @@
     import Card from './Card.svelte';
     import MetricNumber from './MetricNumber.svelte';
     import Chart from './Chart.svelte';
+    import tailwindTheme from 'tailwindcss/defaultTheme';
+    const colors = tailwindTheme.colors;
+
+    let chartColors = [];
+    const colorNames = ["gray", "red", "orange", "yellow", "green", "blue", "purple", "pink"];
+    colorNames.forEach(colorName => chartColors.push(colors[colorName]["600"]))
 
     // Passthrough
     export let data;
@@ -41,16 +47,23 @@
 		let selected = [];
 		for (let i = 0; i < topN; i++) {
 			let key = countryVals[i][0];
-			selected.push([key, ...returnCountries[key]]);
+			selected.push({
+                label: key,
+                data: returnCountries[key],
+                borderColor: chartColors[i % chartColors.length],
+                backgroundColor: chartColors[i % chartColors.length],
+                fill: false,
+                lineTension: 0,
+                pointRadius: 0,
+                pointHitRadius: 5,
+                pointHoverRadius: 5
+            });
 		}
 
 		// Return results in C3 format
 		return {
-			x: "x",
-			columns: [
-				["x", ...dateLabels],
-				...selected
-			]
+            labels: dateLabels,
+            datasets: selected
 		};
 	}
 </script>
