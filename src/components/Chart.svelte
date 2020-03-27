@@ -6,6 +6,8 @@
     import tailwindTheme from 'tailwindcss/defaultTheme';
     const colors = tailwindTheme.colors;
     const chartColors = ["gray", "red", "orange", "yellow", "green", "blue", "purple", "pink"];
+    const fontPref = "Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif";
+    Chart.defaults.global.defaultFontFamily = fontPref;
 
     function getColors() {
         let chColors = [];
@@ -81,7 +83,6 @@
                 legend: {
                     position: "bottom",
                     labels: {
-                        fontFamily: "Inter",
                         boxWidth: 12 // bound to font size
                     }
                 }
