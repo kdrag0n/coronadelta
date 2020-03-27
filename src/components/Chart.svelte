@@ -63,7 +63,8 @@
                     xAxes: [{
                         ticks: {
                             minRotation: 0,
-                            maxRotation: 0
+                            maxRotation: 0,
+                            autoSkipPadding: 25
                         }
                     }],
                     yAxes: [{
