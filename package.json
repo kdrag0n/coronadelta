@@ -10,7 +10,7 @@
     "test": "run-p --race dev cy:run"
   },
   "dependencies": {
-    "chart.js": "^3.0.0-alpha",
+    "chart.js": "^2.9.3",
     "compression": "^1.7.1",
     "polka": "next",
     "sirv": "^0.4.0"
