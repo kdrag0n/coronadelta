@@ -60,6 +60,10 @@ export default {
             })
         ],
 
+        external: [
+            'moment'
+        ],
+
         onwarn,
     },
 
