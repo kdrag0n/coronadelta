@@ -1,7 +1,6 @@
 <script>
     import { onMount, onDestroy } from 'svelte';
     import Chart from 'chart.js';
-    import 'chartjs-plugin-deferred';
 
     import tailwindTheme from 'tailwindcss/defaultTheme';
     const colors = tailwindTheme.colors;
@@ -81,22 +80,6 @@
                     labels: {
                         fontFamily: "Inter",
                         boxWidth: 12 // bound to font size
-                    }
-                },
-                plugins: {
-                    deferred: {
-                        xOffset: 1,
-                        yOffset: 1,
-                        delay: 0
-                    },
-                    crosshair: {
-                        line: {
-                            color: colors.gray["600"],
-                            width: 1
-                        },
-                        snap: {
-                            enabled: true
-                        }
                     }
                 }
             }
