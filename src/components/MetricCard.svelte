@@ -1,4 +1,5 @@
 <script>
+    import { data } from '../stores.js';
     import Card from './Card.svelte';
     import MetricNumber from './MetricNumber.svelte';
     import Chart from './Chart.svelte';
@@ -10,18 +11,18 @@
     colorNames.forEach(colorName => chartColors.push(colors[colorName]["600"]))
 
     // Passthrough
-    export let data;
     export let dateLabels;
     // Meta
     export let textClass;
     export let label;
     export let topN = 6;
     export let growthThreshold = false;
+    export let log = false;
     // Specific
     export let metric;
     export let format;
     export let sortFormat = format;
-    $: totalN = data === undefined ? 0 : data[metric][format].Total[data[metric][format].Total.length - 1];
+    $: totalN = $data === undefined ? 0 : $data[metric][format].Total[$data[metric][format].Total.length - 1];
 
 	function selectDataset(sortCountries, returnCountries, topN) {
 		// Construct (country, last value) array
@@ -81,7 +82,7 @@
 
 <Card>
     <MetricNumber n={totalN} class={textClass} label={label} />
-    {#if data !== undefined}
-        <Chart data={selectDataset(data[metric][sortFormat], data[metric][format], topN)} />
+    {#if $data !== undefined}
+        <Chart data={selectDataset($data[metric][sortFormat], $data[metric][format], topN)} {log} />
     {/if}
 </Card>

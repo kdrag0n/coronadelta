@@ -3,26 +3,50 @@
     import Chart from 'chart.js';
     import ChartTooltip from './ChartTooltip.svelte';
 
-    import tailwindTheme from 'tailwindcss/defaultTheme';
-    const colors = tailwindTheme.colors;
     const fontPref = "Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif";
-    const logTicks = {
-        1: "1",
-        10: "10",
-        100: "100",
-        1000: "1k",
-        10000: "10k",
-        100000: "100k",
-        1000000: "1M",
-        10000000: "10M",
-        100000000: "100M",
-        1000000000: "1B",
-        10000000000: "10B"
+    const logTicks = [1e0, 1e1, 1e2, 1e3, 1e4, 1e5, 1e6, 1e7, 1e8, 1e9, 1e10, 1e11];
+
+    function prettyTick(val, idx, vals) {
+        if (val < 1000)
+            return val.toLocaleString();
+
+        if (val < 1e6)
+            return Math.floor(val / 1000) + "k";
+
+        if (val < 1e9)
+            return Math.floor(val / 1e6) + "M";
+
+        if (val < 1e12)
+            return Math.floor(val / 1e9) + "B";
+
+        return val.toLocaleString();
+    }
+    window.prettyTick = prettyTick;
+
+    const linearAxis = {
+        type: "linear",
+        ticks: {
+            callback: prettyTick
+        }
     };
 
-    export let height = "320px";
-    export let data;
+    const logAxis = {
+        type: "logarithmic",
+        ticks: {
+            callback: prettyTick
+        },
+        afterBuildTicks: chartObj => {
+            const ticks = logTicks;
+            chartObj.ticks.splice(0, chartObj.ticks.length);
+            chartObj.ticks.push(...ticks);
+        }
+    };
+
     export let type = "line";
+    export let height = "320px";
+
+    export let data;
+    export let log = false;
 
     let canvas;
     let chart;
@@ -73,7 +97,8 @@
                             maxRotation: 0,
                             autoSkipPadding: 25
                         }
-                    }]
+                    }],
+                    yAxes: [log ? logAxis : linearAxis]
                 },
                 elements: {
                     line: {
@@ -106,7 +131,11 @@
         });
     });
 
-    //afterUpdate(() => chart.update(data));
+    $: if (chart !== undefined) {
+        chart.options.scales.yAxes[0] = log ? logAxis : linearAxis;
+        chart.data = data;
+        chart.update();
+    }
 
     onDestroy(() => {
         // for GC

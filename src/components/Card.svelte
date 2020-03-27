@@ -4,6 +4,6 @@
 	}
 </style>
 
-<div class="shadow-card rounded-lg p-4 lg:p-6 bg-white">
+<div class="shadow-card rounded-lg p-4 bg-white">
     <slot></slot>
 </div>
