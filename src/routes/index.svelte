@@ -4,7 +4,7 @@
 	import { onMount } from 'svelte';
 	import { data, useLog } from '../stores.js';
 	import Card from '../components/Card.svelte';
-	import Checkbox from '../components/Checkbox.svelte';
+	import Switch from '../components/Switch.svelte';
 	import MetricCard from '../components/MetricCard.svelte';
 	import PageMeta from '../components/PageMeta.svelte';
 
