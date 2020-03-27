@@ -44,7 +44,7 @@
 			</div>
 
 			<div>
-				<Checkbox label="Logarithmic scale" bind:checked={$useLog} />
+				<Switch label="Logarithmic scale" bind:checked={$useLog} />
 			</div>
 		</div>
 	</Card>
