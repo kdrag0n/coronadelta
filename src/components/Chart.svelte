@@ -1,6 +1,7 @@
 <script>
     import { onMount, onDestroy } from 'svelte';
     import Chart from 'chart.js';
+    import ChartTooltip from './ChartTooltip.svelte';
 
     import tailwindTheme from 'tailwindcss/defaultTheme';
     const colors = tailwindTheme.colors;
@@ -22,7 +23,8 @@
     let ttModel = {
         opacity: 0
     };
-    let ttPosition;
+    let ttX;
+    let ttY;
 
     onMount(async () => {
         chart = new Chart(canvas, {
@@ -43,7 +45,8 @@
                         let x = rect.left + window.pageXOffset + model.x;
                         let y = rect.top + window.pageYOffset + model.y - 42;
 
-                        ttPosition = [x, y];
+                        ttX = x;
+                        ttY = y;
                         ttModel = model;
                     }
                 },
@@ -94,57 +97,8 @@
     });
 </script>
 
-<style>
-    .tooltip {
-        opacity: 1;
-        position: absolute;
-        background: rgba(26, 32, 44, .9);
-        color: white;
-        border-radius: 6px;
-        pointer-events: none;
-        font-size: 12px;
-        padding: 10px;
-        line-height: 1.2rem;
-    }
-
-    .tt-header {
-        padding-bottom: 0.25rem;
-    }
-
-    .labelColor {
-        border-width: 2px;
-    }
-</style>
-
 <div style="position: relative; height: {height};">
     <canvas bind:this={canvas} on:beforeprint={chart.resize()}></canvas>
 </div>
 
-{#if ttModel.opacity !== 0}
-    <div class="tooltip" bind:this={tooltip}
-         style="left: {ttPosition[0]}px; top: {ttPosition[1]}px">
-        {#if ttModel.body}
-            <table>
-                <thead>
-                    {#each (ttModel.title || []) as line}
-                        <tr><th class="tt-header">
-                            {line}
-                        </th></tr>
-                    {/each}
-                </thead>
-
-                <tbody>
-                    {#each ttModel.body as item, i}
-                        <tr><td>
-                            <span class="labelColor"
-                                  style="background-color: {ttModel.labelColors[i].backgroundColor};
-                                         border-color: {ttModel.labelColors[i].borderColor}">
-                            </span>
-                            &nbsp;{item.lines}
-                        </td></tr>
-                    {/each}
-                </tbody>
-            </table>
-        {/if}
-    </div>
-{/if}
+<ChartTooltip model={ttModel} x={ttX} y={ttY} />
