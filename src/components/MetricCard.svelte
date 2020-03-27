@@ -6,7 +6,7 @@
     const colors = tailwindTheme.colors;
 
     let chartColors = [];
-    const colorNames = ["gray", "red", "orange", "yellow", "green", "blue", "purple", "pink"];
+    const colorNames = ["red", "yellow", "purple", "blue", "green", "gray", "orange", "pink", "indigo", "teal"];
     colorNames.forEach(colorName => chartColors.push(colors[colorName]["600"]))
 
     // Passthrough
@@ -16,6 +16,7 @@
     export let textClass;
     export let label;
     export let topN = 6;
+    export let growthThreshold = false;
     // Specific
     export let metric;
     export let format;
@@ -51,14 +52,24 @@
                 label: key,
                 data: returnCountries[key],
                 borderColor: chartColors[i % chartColors.length],
-                backgroundColor: chartColors[i % chartColors.length],
-                fill: false,
-                lineTension: 0,
-                pointRadius: 0,
-                pointHitRadius: 5,
-                pointHoverRadius: 5
+                backgroundColor: chartColors[i % chartColors.length]
             });
 		}
+
+        // Inject exponential threshold
+        if (growthThreshold) {
+            let thresData = [];
+            thresData.length = dateLabels.length;
+            thresData.fill(1);
+            selected.push({
+                label: "Exponential threshold",
+                data: thresData,
+                borderColor: chartColors[3], // purple
+                backgroundColor: chartColors[3],
+                borderWidth: 2,
+                borderDash: [8]
+            });
+        }
 
 		// Return results in C3 format
 		return {

@@ -5,15 +5,20 @@
 
     import tailwindTheme from 'tailwindcss/defaultTheme';
     const colors = tailwindTheme.colors;
-    const chartColors = ["gray", "red", "orange", "yellow", "green", "blue", "purple", "pink"];
     const fontPref = "Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif";
-    Chart.defaults.global.defaultFontFamily = fontPref;
-
-    function getColors() {
-        let chColors = [];
-        chartColors.forEach(colorName => chColors.push(colors[colorName]["600"]))
-        return chColors;
-    }
+    const logTicks = {
+        1: "1",
+        10: "10",
+        100: "100",
+        1000: "1k",
+        10000: "10k",
+        100000: "100k",
+        1000000: "1M",
+        10000000: "10M",
+        100000000: "100M",
+        1000000000: "1B",
+        10000000000: "10B"
+    };
 
     export let height = "320px";
     export let data;
@@ -27,6 +32,8 @@
     };
     let ttX;
     let ttY;
+
+    Chart.defaults.global.defaultFontFamily = fontPref;
 
     onMount(async () => {
         chart = new Chart(canvas, {
@@ -66,19 +73,6 @@
                             maxRotation: 0,
                             autoSkipPadding: 25
                         }
-                    }],
-                    yAxes: [{
-                        type: "logarithmic",
-                        ticks: {
-                            callback: (val, idx, vals) => {
-                                return val.toLocaleString();
-                            }
-                        },
-                        afterBuildTicks: chartObj => {
-                            const ticks = [1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000, 10000000000];
-                            chartObj.ticks.splice(0, chartObj.ticks.length);
-                            chartObj.ticks.push(...ticks);
-                        }
                     }]
                 },
                 elements: {
@@ -89,7 +83,23 @@
                 legend: {
                     position: "bottom",
                     labels: {
-                        boxWidth: 12 // bound to font size
+                        boxWidth: 12, // bound to font size
+                        generateLabels: chart => {
+                            let orig = Chart.defaults.global.legend.labels.generateLabels(chart);
+                            return orig.map(item => {
+                                delete item.lineDash;
+                                return item;
+                            });
+                        }
+                    }
+                },
+                datasets: {
+                    line: {
+                        fill: false,
+                        lineTension: 0,
+                        pointRadius: 0,
+                        pointHitRadius: 5,
+                        pointHoverRadius: 5
                     }
                 }
             }

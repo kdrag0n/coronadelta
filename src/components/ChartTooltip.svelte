@@ -15,6 +15,7 @@
         font-size: 12px;
         padding: 10px;
         line-height: 1.2rem;
+        user-select: none;
     }
 
     .tt-header {

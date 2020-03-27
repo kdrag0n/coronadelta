@@ -31,7 +31,7 @@
 
 <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
 	<MetricCard {data} {dateLabels}
-		textClass="text-orange-600" label="cases"
+		textClass="text-orange-600" label="confirmed cases"
 		metric="cases" format="absolute" />
 
 	<MetricCard {data} {dateLabels}
@@ -39,7 +39,7 @@
 		metric="cases" format="relative" />
 
 	<MetricCard {data} {dateLabels}
-		textClass="text-orange-600" label="case growth factor"
+		textClass="text-orange-600" label="case growth factor" topN=2 growthThreshold=true
 		metric="cases" sortFormat="relative" format="growth" />
 
 	<MetricCard {data} {dateLabels}
@@ -51,6 +51,6 @@
 		metric="deaths" format="relative" />
 
 	<MetricCard {data} {dateLabels}
-		textClass="text-red-600" label="death growth factor"
+		textClass="text-red-600" label="death growth factor" topN=2 growthThreshold=true
 		metric="deaths" sortFormat="relative" format="growth" />
 </div>
