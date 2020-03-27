@@ -6,6 +6,7 @@ import babel from 'rollup-plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup.js';
 import sveltePreprocess from 'svelte-preprocess';
+import ignore from 'rollup-plugin-ignore';
 
 import pkg from './package.json';
 
@@ -57,11 +58,9 @@ export default {
 
             !dev && terser({
                 module: true
-            })
-        ],
+            }),
 
-        external: [
-            'moment'
+            ignore(['moment'])
         ],
 
         onwarn,
