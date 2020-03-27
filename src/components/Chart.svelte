@@ -1,21 +1,3 @@
-<style global>
-    .c3-line {
-        stroke-width: 2px !important;
-    }
-
-    .c3-event-rects, .c3-event-rect {
-        cursor: auto !important;
-    }
-
-    .c3-grid line {
-        stroke: #ccc !important;
-    }
-
-    .c3-circles circle:not(._expanded_) {
-        display: none !important;
-    }
-</style>
-
 <script>
     import { onMount, onDestroy } from 'svelte';
     import Chart from 'chart.js';
