@@ -2,6 +2,7 @@
     import { onMount, onDestroy } from 'svelte';
     import { fade } from 'svelte/transition';
     import Chart from 'chart.js';
+    import 'chartjs-plugin-deferred';
 
     import tailwindTheme from 'tailwindcss/defaultTheme';
     const colors = tailwindTheme.colors;
@@ -44,7 +45,7 @@
                     caretPadding: 10,
                     custom: model => {
                         //_chartCanvas = this._chart.canvas;
-                        //ttModel = model;
+                        ttModel = model;
                     }
                 },
                 animation: {
@@ -81,6 +82,13 @@
                         fontFamily: "Inter",
                         boxWidth: 12 // bound to font size
                     }
+                },
+                plugins: {
+                    deferred: {
+                        xOffset: 1,
+                        yOffset: 1,
+                        delay: 0
+                    }
                 }
             }
         });
@@ -106,6 +114,7 @@
         pointer-events: none;
         -webkit-transform: translate(-50%, 0);
         transform: translate(-50%, 0);
+        font-size: 12px;
     }
 
     .labelColor {
