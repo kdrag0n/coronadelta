@@ -1,9 +1,7 @@
 <script>
     import { onMount, onDestroy } from 'svelte';
-    import { fade } from 'svelte/transition';
     import Chart from 'chart.js';
     import 'chartjs-plugin-deferred';
-    import '../crosshair.js';
 
     import tailwindTheme from 'tailwindcss/defaultTheme';
     const colors = tailwindTheme.colors;
@@ -38,14 +36,15 @@
                     mode: "index",
                     intersect: false,
                     position: "nearest",
-                    bodyFontFamily: "Inter",
                     bodySpacing: 8,
                     titleMarginBottom: 10,
-                    xPadding: 10,
-                    yPadding: 10,
                     caretPadding: 10,
                     custom: model => {
-                        ttPosition = canvas.getBoundingClientRect();
+                        let rect = canvas.getBoundingClientRect();
+                        let x = rect.left + window.pageXOffset + model.x;
+                        let y = rect.top + window.pageYOffset + model.y - 42;
+
+                        ttPosition = [x, y];
                         ttModel = model;
                     }
                 },
@@ -119,12 +118,14 @@
         background: rgba(26, 32, 44, .9);
         color: white;
         border-radius: 6px;
-        -webkit-transition: all .1s ease;
-        transition: all .1s ease;
         pointer-events: none;
-        -webkit-transform: translate(-50%, 0);
-        transform: translate(-50%, 0);
         font-size: 12px;
+        padding: 10px;
+        line-height: 1.2rem;
+    }
+
+    .tt-header {
+        padding-bottom: 0.25rem;
     }
 
     .labelColor {
@@ -137,15 +138,13 @@
 </div>
 
 {#if ttModel.opacity !== 0}
-    <div class="tooltip" bind:this={tooltip} transition:fade="{{ duration: 100 }}"
-         style="left: {ttPosition.left + window.pageXOffset + ttModel.caretX}px;
-                top: {ttPosition.top + window.pageYOffset + ttModel.caretY - 36}px;
-                padding: {ttModel.yPadding}px {ttModel.xPadding}px">
+    <div class="tooltip" bind:this={tooltip}
+         style="left: {ttPosition[0]}px; top: {ttPosition[1]}px">
         {#if ttModel.body}
             <table>
                 <thead>
                     {#each (ttModel.title || []) as line}
-                        <tr><th>
+                        <tr><th class="tt-header">
                             {line}
                         </th></tr>
                     {/each}
