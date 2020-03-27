@@ -1,8 +1,8 @@
 {
     "background_color": "#fffffe",
     "theme_color": "#ff8e3c",
-    "name": "TODO",
-    "short_name": "TODO",
+    "name": "CoronaDelta",
+    "short_name": "CoronaDelta",
     "display": "minimal-ui",
     "start_url": "/",
     "icons": [
