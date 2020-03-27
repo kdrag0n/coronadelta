@@ -3,6 +3,7 @@
     import { fade } from 'svelte/transition';
     import Chart from 'chart.js';
     import 'chartjs-plugin-deferred';
+    import '../crosshair.js';
 
     import tailwindTheme from 'tailwindcss/defaultTheme';
     const colors = tailwindTheme.colors;
@@ -24,7 +25,7 @@
     let ttModel = {
         opacity: 0
     };
-    let _chartCanvas;
+    let ttPosition;
 
     onMount(async () => {
         chart = new Chart(canvas, {
@@ -33,7 +34,7 @@
             options: {
                 maintainAspectRatio: false,
                 tooltips: {
-                    enabled: true,
+                    enabled: false,
                     mode: "index",
                     intersect: false,
                     position: "nearest",
@@ -44,7 +45,7 @@
                     yPadding: 10,
                     caretPadding: 10,
                     custom: model => {
-                        //_chartCanvas = this._chart.canvas;
+                        ttPosition = canvas.getBoundingClientRect();
                         ttModel = model;
                     }
                 },
@@ -88,6 +89,15 @@
                         xOffset: 1,
                         yOffset: 1,
                         delay: 0
+                    },
+                    crosshair: {
+                        line: {
+                            color: colors.gray["600"],
+                            width: 1
+                        },
+                        snap: {
+                            enabled: true
+                        }
                     }
                 }
             }
@@ -128,8 +138,8 @@
 
 {#if ttModel.opacity !== 0}
     <div class="tooltip" bind:this={tooltip} transition:fade="{{ duration: 100 }}"
-         style="left: {canvas.offsetTop + ttModel.caretX}px;
-                top: {canvas.offsetLeft + ttModel.caretY}px;
+         style="left: {ttPosition.left + window.pageXOffset + ttModel.caretX}px;
+                top: {ttPosition.top + window.pageYOffset + ttModel.caretY - 36}px;
                 padding: {ttModel.yPadding}px {ttModel.xPadding}px">
         {#if ttModel.body}
             <table>
