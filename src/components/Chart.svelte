@@ -43,7 +43,7 @@
     };
 
     export let type = "line";
-    export let height = "320px";
+    export let height = "310px";
 
     export let data;
     export let log = false;
