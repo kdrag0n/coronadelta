@@ -1,5 +1,6 @@
 <script>
     import { onMount, onDestroy } from 'svelte';
+    import { chartRenders, scheduleChartRender } from '../stores.js';
     import Chart from 'chart.js';
     import ChartTooltip from './ChartTooltip.svelte';
 
@@ -132,7 +133,8 @@
     }
 
     onMount(async () => {
-        setTimeout(createChart, 0);
+        $chartRenders.push(createChart);
+        scheduleChartRender();
     });
 
     $: if (chart !== undefined) {
