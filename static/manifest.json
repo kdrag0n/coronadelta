@@ -5,6 +5,7 @@
     "short_name": "CoronaDelta",
     "display": "minimal-ui",
     "start_url": "/",
+    "display": "standalone",
     "icons": [
         {
             "src": "logo-192.png",
