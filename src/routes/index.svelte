@@ -15,7 +15,7 @@
     }
 
     onMount(async () => {
-        let resp = await fetch("/ecdc.json");
+        let resp = await fetch("/timeseries_data.json");
         let _data = await resp.json();
 
         let startDate = new Date(_data.dates.start);
@@ -60,7 +60,8 @@
 		metric="cases" format="relative" />
 
 	<MetricCard {dateLabels}
-		textClass="text-orange-600" label="case growth factor" topN=2 growthThreshold=true
+		textClass="text-orange-600" label="case growth factor"
+		topN=2 growthThreshold=true
 		metric="cases" sortFormat="relative" format="growth" />
 
 	<MetricCard {dateLabels} log={$useLog}
@@ -72,6 +73,7 @@
 		metric="deaths" format="relative" />
 
 	<MetricCard {dateLabels}
-		textClass="text-red-600" label="death growth factor" topN=2 growthThreshold=true
+		textClass="text-red-600" label="death growth factor"
+		topN=2 growthThreshold=true
 		metric="deaths" sortFormat="relative" format="growth" />
 </div>
