@@ -10,6 +10,7 @@
     "test": "run-p --race dev cy:run"
   },
   "dependencies": {
+    "@rollup/plugin-json": "^4.0.2",
     "chart.js": "^2.9.3",
     "chartjs-plugin-annotation": "^0.5.7",
     "compression": "^1.7.1",

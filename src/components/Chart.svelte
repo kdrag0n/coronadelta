@@ -21,7 +21,6 @@
 
         return val.toLocaleString();
     }
-    window.prettyTick = prettyTick;
 
     const linearAxis = {
         type: "linear",

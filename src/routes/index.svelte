@@ -1,33 +1,33 @@
 <PageMeta title="Coronavirus at a glance" description="Live insights into fresh statistics for the COVID-19 coronavirus pandemic, complete with interactive charts." slug="" />
 
 <script>
-	import { onMount } from 'svelte';
-	import { data, useLog } from '../stores.js';
+	import { onMount, onDestroy } from 'svelte';
+	import { data, useLog, updateData } from '../stores.js';
 	import Card from '../components/Card.svelte';
 	import Switch from '../components/Switch.svelte';
 	import MetricCard from '../components/MetricCard.svelte';
 	import PageMeta from '../components/PageMeta.svelte';
 
-	let dateLabels = [];
+	let dateLabels;
 
     function formatDate(date) {
         return date.toLocaleDateString(undefined, { month: "numeric", day: "numeric" });
     }
 
-    onMount(async () => {
-        let resp = await fetch("/timeseries_data.json");
-        let _data = await resp.json();
-
-        let startDate = new Date(_data.dates.start);
-        let nDays = _data.dates.count;
-        for (let offset = 0; offset < nDays; offset++) {
+	$: {
+		dateLabels = [];
+        let startDate = new Date($data.dates.start);
+        for (let offset = 0; offset < $data.dates.count; offset++) {
             let date = new Date(startDate);
             date.setDate(startDate.getDate() + offset);
             dateLabels.push(formatDate(date));
 		}
+	}
 
-		$data = _data;
-    });
+	const interval = setInterval(updateData, 60 * 60 * 1000); // 1 hour
+	onDestroy(() => {
+		clearInterval(interval);
+	});
 </script>
 
 <style>
