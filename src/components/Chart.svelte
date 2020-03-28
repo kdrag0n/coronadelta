@@ -55,10 +55,11 @@
     };
     let ttX;
     let ttY;
+    let firstUpdate = true;
 
     Chart.defaults.global.defaultFontFamily = fontPref;
 
-    onMount(async () => {
+    function createChart() {
         chart = new Chart(canvas, {
             type: type,
             data: data,
@@ -128,12 +129,20 @@
                 }
             }
         });
+    }
+
+    onMount(async () => {
+        setTimeout(createChart, 0);
     });
 
     $: if (chart !== undefined) {
-        chart.options.scales.yAxes[0] = log ? logAxis : linearAxis;
-        chart.data = data;
-        chart.update();
+        if (firstUpdate) {
+            firstUpdate = false;
+        } else {
+            chart.options.scales.yAxes[0] = log ? logAxis : linearAxis;
+            chart.data = data;
+            chart.update();
+        }
     }
 
     onDestroy(() => {

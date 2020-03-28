@@ -1,4 +1,6 @@
-<PageMeta title="Coronavirus at a glance" description="Live insights into fresh statistics for the COVID-19 coronavirus pandemic, complete with interactive charts." slug="" />
+<PageMeta title="Coronavirus at a glance"
+		  description="Live insights into fresh statistics for the COVID-19 coronavirus pandemic, complete with interactive charts."
+		  slug="" />
 
 <script>
 	import { onMount, onDestroy } from 'svelte';
@@ -15,12 +17,13 @@
     }
 
 	$: {
-		dateLabels = [];
+		let nDays = $data.dates.count;
         let startDate = new Date($data.dates.start);
-        for (let offset = 0; offset < $data.dates.count; offset++) {
+		dateLabels = new Array(nDays);
+        for (let offset = 0; offset < nDays; offset++) {
             let date = new Date(startDate);
             date.setDate(startDate.getDate() + offset);
-            dateLabels.push(formatDate(date));
+            dateLabels[offset] = formatDate(date);
 		}
 	}
 
