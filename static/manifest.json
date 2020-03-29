@@ -1,11 +1,11 @@
 {
-    "background_color": "#fffffe",
-    "theme_color": "#ff8e3c",
     "name": "CoronaDelta",
     "short_name": "CoronaDelta",
     "description": "Live insights into fresh statistics for the COVID-19 coronavirus pandemic, complete with interactive charts.",
-    "start_url": "/",
     "display": "standalone",
+    "start_url": "/",
+    "background_color": "#fffffe",
+    "theme_color": "#ff8e3c",
     "icons": [
         {
             "src": "logo-192.png",
