@@ -1,4 +1,4 @@
-<style global>
+<style>
     @font-face {
         font-family: 'Metropolis';
         font-style: normal;
