@@ -20,9 +20,11 @@ export function scheduleChartRender() {
         renderScheduled = true;
 
         window.requestAnimationFrame(ts => {
-            job();
-            renderScheduled = false;
-            scheduleChartRender();
+            setTimeout(() => {
+                job();
+                renderScheduled = false;
+                scheduleChartRender();
+            }, 0);
         });
     }
 }
