@@ -8,7 +8,7 @@ export const useLog = writableLocal(true);
 const dataPath = "/timeseries_data.json";
 export async function updateData() {
     let resp = await fetch(dataPath);
-    $data = await resp.json();
+    data.set(await resp.json());
 }
 
 let _chartRenders = [];
