@@ -3,7 +3,7 @@
     "theme_color": "#ff8e3c",
     "name": "CoronaDelta",
     "short_name": "CoronaDelta",
-    "display": "minimal-ui",
+    "description": "Live insights into fresh statistics for the COVID-19 coronavirus pandemic, complete with interactive charts.",
     "start_url": "/",
     "display": "standalone",
     "icons": [
