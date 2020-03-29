@@ -4,7 +4,9 @@
         font-style: normal;
         font-weight: 700;
         font-display: swap;
-        src: url("/Metropolis-Bold.otf");
+        src: url("/fonts/Metropolis-Bold.woff2") format("woff2"),
+             url("/fonts/Metropolis-Bold.woff") format("woff"),
+             url("/fonts/Metropolis-Bold.otf") format("opentype");
     }
 </style>
 
