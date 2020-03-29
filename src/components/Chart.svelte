@@ -2,6 +2,7 @@
     import { onMount, onDestroy } from 'svelte';
     import { chartRenders, scheduleChartRender } from '../stores.js';
     import Chart from 'chart.js';
+    import 'chartjs-plugin-deferred';
     import ChartTooltip from './ChartTooltip.svelte';
 
     const fontPref = "Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif";
@@ -126,6 +127,13 @@
                         pointRadius: 0,
                         pointHitRadius: 5,
                         pointHoverRadius: 5
+                    }
+                },
+                plugins: {
+                    deferred: {
+                        xOffset: 1,
+                        yOffset: 1,
+                        delay: 1
                     }
                 }
             }
