@@ -1,11 +1,11 @@
 <script>
-    import NavLink from './NavLink.svelte';
+    import NavLink from "./NavLink.svelte";
     export let segment;
 </script>
 
 <style>
     nav {
-        border-bottom: 1px solid theme('colors.orange.200');
+        border-bottom: 1px solid theme("colors.orange.200");
         font-weight: 300;
         padding: 0 1em;
     }
@@ -17,7 +17,7 @@
 
     /* clearfix */
     ul::after {
-        content: '';
+        content: "";
         display: block;
         clear: both;
     }
@@ -25,10 +25,11 @@
 
 <nav>
     <ul>
-        <NavLink {segment} slug='at a glance' link='.'/>
-        <NavLink {segment} slug='numbers'/>
-        <NavLink {segment} slug='explanation'/>
-        <NavLink {segment} slug='info'/>
-        <NavLink {segment} slug='about'/>
+        <NavLink {segment} slug="at a glance" link="."/>
+        <NavLink {segment} slug="numbers"/>
+        <NavLink {segment} slug="misconceptions"/>
+        <NavLink {segment} slug="explanation"/>
+        <NavLink {segment} slug="info"/>
+        <NavLink {segment} slug="about"/>
     </ul>
 </nav>

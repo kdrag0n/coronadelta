@@ -1,6 +1,6 @@
 <script>
-    import TailwindBase from '../components/tailwind/TailwindBase.svelte';
-    import Nav from '../components/Nav.svelte';
+    import TailwindBase from "../components/tailwind/TailwindBase.svelte";
+    import Nav from "../components/Nav.svelte";
 
     export let segment;
 </script>

@@ -19,10 +19,10 @@
 
     [aria-current]::after {
         position: absolute;
-        content: '';
+        content: "";
         width: calc(100% - 1em);
         height: 2px;
-        background-color: theme('colors.orange.500');
+        background-color: theme("colors.orange.500");
         display: block;
         bottom: -1px;
     }
@@ -35,5 +35,5 @@
 </style>
 
 <li>
-    <a rel=prefetch aria-current='{segment === linkSlug ? "page" : undefined}' href={link}>{slug}</a>
+    <a rel=prefetch aria-current={segment === linkSlug ? "page" : undefined} href={link}>{slug}</a>
 </li>

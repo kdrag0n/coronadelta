@@ -1,6 +1,6 @@
 <style>
     @font-face {
-        font-family: 'Metropolis';
+        font-family: "Metropolis";
         font-style: normal;
         font-weight: 700;
         font-display: swap;

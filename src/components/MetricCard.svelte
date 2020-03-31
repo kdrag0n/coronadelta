@@ -1,9 +1,9 @@
 <script>
-    import { data } from '../stores.js';
-    import Card from './Card.svelte';
-    import MetricNumber from './MetricNumber.svelte';
-    import Chart from './Chart.svelte';
-    import tailwindTheme from 'tailwindcss/defaultTheme';
+    import { data } from "../stores.js";
+    import Card from "./Card.svelte";
+    import MetricNumber from "./MetricNumber.svelte";
+    import Chart from "./Chart.svelte";
+    import tailwindTheme from "tailwindcss/defaultTheme";
     const colors = tailwindTheme.colors;
 
     let chartColors = [];

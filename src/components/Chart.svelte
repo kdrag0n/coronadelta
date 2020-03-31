@@ -1,8 +1,8 @@
 <script>
-    import { onMount, onDestroy } from 'svelte';
-    import { chartRenders, scheduleChartRender } from '../stores.js';
-    import Chart from 'chart.js';
-    import ChartTooltip from './ChartTooltip.svelte';
+    import { onMount, onDestroy } from "svelte";
+    import { chartRenders, scheduleChartRender } from "../stores.js";
+    import Chart from "chart.js";
+    import ChartTooltip from "./ChartTooltip.svelte";
 
     const fontPref = "Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif";
     const logTicks = [1e0, 1e1, 1e2, 1e3, 1e4, 1e5, 1e6, 1e7, 1e8, 1e9, 1e10, 1e11];

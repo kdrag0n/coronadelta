@@ -3,12 +3,12 @@
 		  slug="" />
 
 <script>
-	import { onMount, onDestroy } from 'svelte';
-	import { data, useLog, updateData } from '../stores.js';
-	import Card from '../components/Card.svelte';
-	import Switch from '../components/Switch.svelte';
-	import MetricCard from '../components/MetricCard.svelte';
-	import PageMeta from '../components/PageMeta.svelte';
+	import { onMount, onDestroy } from "svelte";
+	import { data, useLog, updateData } from "../stores.js";
+	import Card from "../components/Card.svelte";
+	import Switch from "../components/Switch.svelte";
+	import MetricCard from "../components/MetricCard.svelte";
+	import PageMeta from "../components/PageMeta.svelte";
 
 	let dateLabels;
 
