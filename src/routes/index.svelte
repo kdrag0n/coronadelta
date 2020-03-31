@@ -80,3 +80,5 @@
 		topN=2 growthThreshold=true
 		metric="deaths" sortFormat="relative" format="growth" />
 </div>
+
+<p class="text-gray-600">Data sources: <a href="https://www.ecdc.europa.eu/en/geographical-distribution-2019-ncov-cases">ECDC</a> for historical data, <a href="https://thevirustracker.com/">TheVirusTracker</a> (ultimately sourced from <a href="https://www.worldometers.info/coronavirus/">Worldometer</a>) for live updates, <a href="https://www.nytimes.com/interactive/2020/us/coronavirus-us-cases.html">New York Times</a> for US states and counties</p>
