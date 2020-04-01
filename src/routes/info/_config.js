@@ -1,1 +1,1 @@
-export const pageDir = "src/routes/info/pages";
+export const pageDir = "info_pages";
