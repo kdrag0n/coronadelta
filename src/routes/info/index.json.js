@@ -6,7 +6,13 @@ import { pageDir } from "./_config.js";
 function getPages() {
     return fs.readdirSync(pageDir).map(fileName => {
         const post = fs.readFileSync(path.resolve(pageDir, fileName), "utf-8");
-        return grayMatter(post).data;
+        const slug = fileName.replace(/\.md$/, "");
+        const frontMatter = grayMatter(post);
+
+        return {
+            slug,
+            ...frontMatter.data
+        };
     });
 }
 

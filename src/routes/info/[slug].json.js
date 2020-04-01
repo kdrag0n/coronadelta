@@ -4,8 +4,8 @@ import grayMatter from "gray-matter";
 import marked from "marked";
 import { pageDir } from "./_config.js";
 
-function getPost(fileName) {
-    return fs.readFileSync(path.resolve(pageDir, `${fileName}.md`), "utf-8");
+function getPost(slug) {
+    return fs.readFileSync(path.resolve(pageDir, `${slug}.md`), "utf-8");
 }
 
 const renderer = new marked.Renderer();
@@ -28,6 +28,7 @@ export function get(req, res, next) {
 
         res.end(JSON.stringify({
             html,
+            slug,
             ...data
         }));
     } else {

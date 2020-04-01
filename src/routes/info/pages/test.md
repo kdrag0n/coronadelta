@@ -1,6 +1,5 @@
 ---
-slug: 'test'
-title: 'Test page'
+title: "Test page"
 ---
 
 This is a test page.
