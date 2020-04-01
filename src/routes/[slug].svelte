@@ -1,12 +1,12 @@
 <PageMeta title={page.title}
           description={page.description}
-          path="info/{page.slug}" />
+          path="{page.slug}" />
 
 <script context="module">
     export async function preload({ params, query }) {
         // the `slug` parameter is available because
         // this file is called [slug].svelte
-        const res = await this.fetch(`info/${params.slug}.json`);
+        const res = await this.fetch(`${params.slug}.json`);
         const data = await res.json();
 
         if (res.status === 200) {
@@ -18,7 +18,7 @@
 </script>
 
 <script>
-    import PageMeta from "../../components/PageMeta.svelte";
+    import PageMeta from "../components/PageMeta.svelte";
 
     export let page;
 </script>

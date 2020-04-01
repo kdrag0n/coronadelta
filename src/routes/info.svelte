@@ -11,7 +11,7 @@
 </script>
 
 <script>
-    import PageMeta from "../../components/PageMeta.svelte";
+    import PageMeta from "../components/PageMeta.svelte";
 
     export let pages;
 </script>
@@ -27,6 +27,6 @@
 
 <ul>
     {#each pages as page}
-        <li><a rel='prefetch' href='info/{page.slug}'>{page.title}</a></li>
+        <li><a rel="prefetch" href="{page.slug}">{page.title}</a></li>
     {/each}
 </ul>
