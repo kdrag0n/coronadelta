@@ -1,3 +1,7 @@
+<PageMeta title="All about the coronavirus"
+          description="All about the COVID-19 coronavirus pandemic — learn about common misconceptions, prevention, and more."
+          slug="" />
+
 <script context="module">
     export function preload({ params, query }) {
         return this.fetch("info.json").then(r => r.json()).then(pages => {
@@ -7,6 +11,8 @@
 </script>
 
 <script>
+    import PageMeta from "../../components/PageMeta.svelte";
+
     export let pages;
 </script>
 
@@ -16,10 +22,6 @@
         line-height: 1.5;
     }
 </style>
-
-<svelte:head>
-    <title>Coronavirus information</title>
-</svelte:head>
 
 <h1>Recent pages</h1>
 
