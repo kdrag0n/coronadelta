@@ -14,6 +14,7 @@ const production = process.env.NODE_ENV !== 'development'
 module.exports = {
     plugins: [
         require('tailwindcss'),
-        ...(production ? [purgecss] : [])
+        ...(production ? [purgecss] : []),
+        require('autoprefixer')
     ]
 };
