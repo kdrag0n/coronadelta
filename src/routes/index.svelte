@@ -1,6 +1,6 @@
 <PageMeta title="Coronavirus at a glance"
           description="Live insights into fresh statistics for the COVID-19 coronavirus pandemic, complete with interactive charts."
-          slug="" />
+          path="" />
 
 <script>
     import { onMount, onDestroy } from "svelte";

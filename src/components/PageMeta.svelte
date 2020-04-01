@@ -4,19 +4,23 @@
 
     export let title;
     export let description;
-    export let slug;
+    export let path;
+
+    if (path[0] !== "/") {
+        path = "/" + path;
+    }
 </script>
 
 <svelte:head>
     <title>{title} • {site}</title>
     <meta name="description" content={description}>
 
-    <meta property="og:title" content="{title}" />
+    <meta property="og:title" content={title} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://{domain}/{slug}" />
+    <meta property="og:url" content="https://{domain}{path}" />
     <meta property="og:image" content="http://example.com/image.jpg" />
-    <meta property="og:description" content="Live insights into fresh statistics for the COVID-19 coronavirus pandemic, complete with interactive charts." />
-    <meta property="og:site_name" content="{site}" />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content={site} />
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@corona_delta">

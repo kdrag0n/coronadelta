@@ -1,6 +1,6 @@
 <PageMeta title={page.title}
           description={page.description}
-          slug={page.slug} />
+          path="info/{page.slug}" />
 
 <script context="module">
     export async function preload({ params, query }) {

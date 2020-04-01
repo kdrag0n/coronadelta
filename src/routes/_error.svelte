@@ -1,8 +1,16 @@
+<PageMeta title="Error {status}"
+          description="Something went wrong."
+          path={$page.path} />
+
 <script>
+    import PageMeta from "../components/PageMeta.svelte";
+    import { stores } from "@sapper/app";
+
     export let status;
     export let error;
 
     const dev = process.env.NODE_ENV === "development";
+    const { page } = stores();
 </script>
 
 <style>
@@ -27,11 +35,7 @@
     }
 </style>
 
-<svelte:head>
-    <title>{status}</title>
-</svelte:head>
-
-<h1>{status}</h1>
+<h1>Error {status}</h1>
 
 <p>{error.message}</p>
 
