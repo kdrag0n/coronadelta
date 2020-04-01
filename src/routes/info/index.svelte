@@ -23,7 +23,7 @@
     }
 </style>
 
-<h1>Recent pages</h1>
+<h1>Information pages</h1>
 
 <ul>
     {#each pages as page}
