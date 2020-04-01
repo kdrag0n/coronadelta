@@ -8,8 +8,8 @@
 <style>
     main {
         position: relative;
-        padding: 1.5rem; /* gap-6 */
         box-sizing: border-box;
+        @apply p-6;
     }
 </style>
 

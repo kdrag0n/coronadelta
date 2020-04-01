@@ -22,7 +22,7 @@
         content: "";
         width: calc(100% - 1em);
         height: 2px;
-        background-color: theme("colors.orange.500");
+        @apply bg-orange-500;
         display: block;
         bottom: -1px;
     }
