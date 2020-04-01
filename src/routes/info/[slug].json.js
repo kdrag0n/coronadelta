@@ -1,28 +1,44 @@
-import posts from './_posts.js';
+import path from "path";
+import fs from "fs";
+import grayMatter from "gray-matter";
+import marked from "marked";
+import { pageDir } from "./_config.js";
 
-const lookup = new Map();
-posts.forEach(post => {
-    lookup.set(post.slug, JSON.stringify(post));
-});
+function getPost(fileName) {
+    return fs.readFileSync(path.resolve(pageDir, `${fileName}.md`), "utf-8");
+}
+
+const renderer = new marked.Renderer();
 
 export function get(req, res, next) {
-    // the `slug` parameter is available because
-    // this file is called [slug].json.js
+    // Available due to "[slug]" filename
     const { slug } = req.params;
 
-    if (lookup.has(slug)) {
-        res.writeHead(200, {
-            'Content-Type': 'application/json'
-        });
+    // Get markdown text
+    const post = getPost(slug);
 
-        res.end(lookup.get(slug));
-    } else {
-        res.writeHead(404, {
-            'Content-Type': 'application/json'
+    // Parse front matter and content
+    const { data, content } = grayMatter(post);
+    const html = marked(content, { renderer });
+
+    if (html) {
+        res.writeHead(200, {
+            "Content-Type": "application/json"
         });
 
         res.end(JSON.stringify({
-            message: `Not found`
+            html,
+            ...data
         }));
+    } else {
+        res.writeHead(404, {
+            "Content-Type": "application/json"
+        });
+
+        res.end(
+            JSON.stringify({
+                message: `Page '${slug}' not found`
+            })
+        );
     }
 }
