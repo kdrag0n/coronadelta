@@ -4,7 +4,7 @@
 </script>
 
 <style>
-    @supports (-webkit-appearance: none) or (-moz-appearance: none) {
+    @supports (appearance: none) {
         input[type="checkbox"] {
             --active: #275EFE;
             --active-inner: #fff;
@@ -12,8 +12,7 @@
             --border: #BBC1E1;
             --border-hover: #275EFE;
             --background: #fff;
-            -webkit-appearance: none;
-            -moz-appearance: none;
+            appearance: none;
             height: 21px;
             outline: none;
             display: inline-block;
@@ -23,7 +22,6 @@
             cursor: pointer;
             border: 1px solid var(--bc, var(--border));
             background: var(--b, var(--background));
-            -webkit-transition: background .3s, border-color .3s, box-shadow .2s;
             transition: background .3s, border-color .3s, box-shadow .2s;
         }
         input[type="checkbox"]:after {
@@ -32,10 +30,7 @@
             left: 0;
             top: 0;
             position: absolute;
-            -webkit-transition: opacity var(--d-o, 0.2s), -webkit-transform var(--d-t, 0.3s) var(--d-t-e, ease);
-            transition: opacity var(--d-o, 0.2s), -webkit-transform var(--d-t, 0.3s) var(--d-t-e, ease);
             transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
-            transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s), -webkit-transform var(--d-t, 0.3s) var(--d-t-e, ease);
         }
         input[type="checkbox"]:checked {
             --b: var(--active);
@@ -75,8 +70,7 @@
             width: 15px;
             height: 15px;
             background: var(--ab, var(--border));
-            -webkit-transform: translateX(var(--x, 0));
-                            transform: translateX(var(--x, 0));
+            transform: translateX(var(--x, 0));
         }
         input[type="checkbox"].switch:checked {
             --ab: var(--active-inner);
