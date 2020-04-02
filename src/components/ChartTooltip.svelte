@@ -27,7 +27,7 @@
     }
 </style>
 
-{#if model.opacity !== 0}
+{#if model.opacity}
     <div class="tooltip" style="left: {x}px; top: {y}px">
         {#if model.body}
             <table>
@@ -45,8 +45,9 @@
                             <span class="color-strip"
                                   style="background-color: {model.labelColors[i].backgroundColor};
                                          border-color: {model.labelColors[i].borderColor}">
+                                &nbsp;
                             </span>
-                            &nbsp;{item.lines}
+                            {item.lines}
                         </td></tr>
                     {/each}
                 </tbody>
