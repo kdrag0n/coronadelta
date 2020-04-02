@@ -9,6 +9,7 @@
     import Switch from "../components/Switch.svelte";
     import MetricCard from "../components/MetricCard.svelte";
     import PageMeta from "../components/PageMeta.svelte";
+    import { formatDistanceToNow } from "date-fns";
 
     let dateLabels;
 
@@ -43,7 +44,7 @@
     <Card>
         <div class="flex justify-between">
             <div>
-                Updated at
+                Updated {formatDistanceToNow(new Date($data.dates.end), { addSuffix: true })}
             </div>
 
             <div>
