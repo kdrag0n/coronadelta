@@ -22,7 +22,7 @@
         padding-bottom: 0.25rem;
     }
 
-    .labelColor {
+    .color-strip {
         border-width: 2px;
     }
 </style>
@@ -42,7 +42,7 @@
                 <tbody>
                     {#each model.body as item, i}
                         <tr><td>
-                            <span class="labelColor"
+                            <span class="color-strip"
                                   style="background-color: {model.labelColors[i].backgroundColor};
                                          border-color: {model.labelColors[i].borderColor}">
                             </span>
