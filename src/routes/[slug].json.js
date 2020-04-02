@@ -1,21 +1,21 @@
 import path from "path";
-import fs from "fs";
+import { promises as fs } from "fs";
 import grayMatter from "gray-matter";
 import marked from "marked";
 import { pageDir } from "./_config.js";
 
-function getPost(slug) {
-    return fs.readFileSync(path.resolve(pageDir, `${slug}.md`), "utf-8");
+async function getPost(slug) {
+    return await fs.readFile(path.resolve(pageDir, `${slug}.md`), "utf-8");
 }
 
 const renderer = new marked.Renderer();
 
-export function get(req, res, next) {
+export async function get(req, res, next) {
     // Available due to "[slug]" filename
     const { slug } = req.params;
 
     // Get markdown text
-    const post = getPost(slug);
+    const post = await getPost(slug);
 
     // Parse front matter and content
     const { data, content } = grayMatter(post);
