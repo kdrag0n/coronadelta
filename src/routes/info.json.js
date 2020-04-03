@@ -5,18 +5,24 @@ import { pageDir } from "./_config.js";
 
 async function getPages() {
     let files = await fs.readdir(pageDir);
-    let pages = files.map(async (fileName) => {
+    let pages = [];
+
+    for (const fileName of files) {
+        if (!fileName.endsWith(".md")) {
+            continue;
+        }
+
         const post = await fs.readFile(path.resolve(pageDir, fileName), "utf-8");
         const slug = fileName.replace(/\.md$/, "");
         const frontMatter = grayMatter(post);
-
-        return {
+        
+        pages.push({
             slug,
             ...frontMatter.data
-        };
-    });
+        });
+    }
 
-    return await Promise.all(pages);
+    return pages;
 }
 
 export async function get(req, res) {
