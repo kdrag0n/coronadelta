@@ -15,31 +15,38 @@ export async function get(req, res, next) {
     const { slug } = req.params;
 
     // Get markdown text
-    const post = await getPost(slug);
+    let post;
+    try {
+        post = await getPost(slug);
+    } catch (err) {
+        if (err.code === "ENOENT") {
+            res.writeHead(404, {
+                "Content-Type": "application/json"
+            });
+
+            res.end(
+                JSON.stringify({
+                    message: `Page '${slug}' not found`
+                })
+            );
+
+            return;
+        } else {
+            throw err;
+        }
+    }
 
     // Parse front matter and content
     const { data, content } = grayMatter(post);
     const html = marked(content, { renderer });
 
-    if (html) {
-        res.writeHead(200, {
-            "Content-Type": "application/json"
-        });
+    res.writeHead(200, {
+        "Content-Type": "application/json"
+    });
 
-        res.end(JSON.stringify({
-            html,
-            slug,
-            ...data
-        }));
-    } else {
-        res.writeHead(404, {
-            "Content-Type": "application/json"
-        });
-
-        res.end(
-            JSON.stringify({
-                message: `Page '${slug}' not found`
-            })
-        );
-    }
+    res.end(JSON.stringify({
+        html,
+        slug,
+        ...data
+    }));
 }
