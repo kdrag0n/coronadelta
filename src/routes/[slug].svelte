@@ -23,10 +23,13 @@
 </script>
 
 <style>
+    .content :global(h2), .content :global(h3) {
+        font-weight: 500
+    }
+
     .content :global(h2) {
         margin-top: 2em;
         font-size: 1.4em;
-        font-weight: 500;
     }
 
     .content :global(pre) {
