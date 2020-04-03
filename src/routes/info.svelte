@@ -1,6 +1,5 @@
 <PageMeta title="All about the coronavirus"
-          description="All about the COVID-19 coronavirus pandemic — learn about common misconceptions, prevention, and more."
-          path="info" />
+          description="All about the COVID-19 coronavirus pandemic — learn about common misconceptions, prevention, and more." />
 
 <script context="module">
     export function preload({ params, query }) {

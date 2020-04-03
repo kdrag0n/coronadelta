@@ -1,10 +1,13 @@
 <script>
+    import { stores } from "@sapper/app";
+    const { page } = stores();
+
     const site = "CoronaDelta";
     const domain = "coronavirus.app";
 
     export let title;
     export let description;
-    export let path;
+    export let path = $page.path;
 
     if (path[0] !== "/") {
         path = "/" + path;
