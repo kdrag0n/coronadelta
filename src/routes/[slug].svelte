@@ -45,14 +45,6 @@
         padding: 0;
     }
 
-    .content :global(ul) {
-        line-height: 1.5;
-    }
-
-    .content :global(li) {
-        margin: 0 0 0.5em 0;
-    }
-
     .content :global(img) {
         max-width: 24rem;
         padding: 2rem;

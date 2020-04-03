@@ -9,6 +9,7 @@
     li {
         display: block;
         float: left;
+        margin: 0;
     }
 
     [aria-current] {
