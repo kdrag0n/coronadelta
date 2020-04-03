@@ -28,7 +28,7 @@
         }
     }
 
-    const interval = setInterval(updateData, 60 * 60 * 1000); // 1 hour
+    const interval = setInterval(updateData, 20 * 60 * 1000); // 20 minutes
     onDestroy(() => {
         clearInterval(interval);
     });
@@ -82,4 +82,4 @@
         metric="deaths" sortFormat="relative" format="growth" />
 </div>
 
-<p class="text-gray-600">Data sources: <a href="https://www.ecdc.europa.eu/en/geographical-distribution-2019-ncov-cases">ECDC</a> for historical data, <a href="https://thevirustracker.com/">TheVirusTracker</a> (ultimately sourced from <a href="https://www.worldometers.info/coronavirus/">Worldometer</a>) for live updates, <a href="https://www.nytimes.com/interactive/2020/us/coronavirus-us-cases.html">New York Times</a> for US states and counties</p>
+<p class="text-gray-600">Data sources: <a href="https://www.ecdc.europa.eu/en/geographical-distribution-2019-ncov-cases">ECDC</a> for historical data, <a href="https://thevirustracker.com/">TheVirusTracker</a> (ultimately sourced from <a href="https://www.worldometers.info/coronavirus/">Worldometer</a>) for live updates, <a href="https://www.nytimes.com/interactive/2020/us/coronavirus-us-cases.html">New York Times</a> for US states and counties. Automatically updates every 20 minutes.</p>
