@@ -24,6 +24,7 @@
 
 <style>
     .content :global(h2) {
+        margin-top: 2em;
         font-size: 1.4em;
         font-weight: 500;
     }
@@ -47,6 +48,13 @@
 
     .content :global(li) {
         margin: 0 0 0.5em 0;
+    }
+
+    .content :global(img) {
+        max-width: 24rem;
+        padding: 2rem;
+        margin: 0 auto;
+        display: block;
     }
 </style>
 
