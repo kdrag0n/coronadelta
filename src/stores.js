@@ -4,6 +4,7 @@ import initData from '../static/timeseries_data.json';
 
 export const data = writableMem(initData);
 export const useLog = writableLocal(true);
+export const tooltipShown = writableMem(false);
 
 const dataPath = "/timeseries_data.json";
 export async function updateData() {

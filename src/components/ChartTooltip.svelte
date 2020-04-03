@@ -1,7 +1,16 @@
 <script>
+    import { tooltipShown } from "../stores.js";
+
     export let model;
     export let x;
     export let y;
+
+    $: if (model.opacity && !$tooltipShown) {
+        $tooltipShown = true;
+        if (window.sa_event !== undefined) {
+            window.sa_event("tooltip");
+        }
+    }
 </script>
 
 <style>

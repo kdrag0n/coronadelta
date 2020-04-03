@@ -1,6 +1,9 @@
 <script>
     import TailwindBase from "../components/tailwind/TailwindBase.svelte";
     import Nav from "../components/Nav.svelte";
+    import Analytics from "../components/Analytics.svelte";
+
+    const dev = process.env.NODE_ENV === "development";
 
     export let segment;
 </script>
@@ -9,7 +12,8 @@
     main {
         position: relative;
         box-sizing: border-box;
-        @apply p-6;
+        margin: 0 auto;
+        @apply max-w-3xl;
     }
 </style>
 
@@ -20,3 +24,7 @@
 <main>
     <slot></slot>
 </main>
+
+{#if !dev}
+    <Analytics />
+{/if}
