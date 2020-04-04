@@ -24,4 +24,4 @@ Below are descriptions of all the names there have been:
 
 In all of the above names, the “corona” (“crown” in Latin) in “coronavirus” refers to how the virus looks when examined under a microscope:
 
-![Coronavirus shape](images/coronavirus.svg)
+![Coronavirus shape, circular with spike proteins](images/coronavirus.svg)
