@@ -18,6 +18,7 @@
 
 <script>
     import PageMeta from "../components/PageMeta.svelte";
+    import Article from "../components/Article.svelte";
 
     export let page;
 </script>
@@ -53,8 +54,10 @@
     }
 </style>
 
-<h1>{page.title}</h1>
+<Article>
+    <h1>{page.title}</h1>
 
-<div class="content">
-    {@html page.html}
-</div>
+    <div class="content">
+        {@html page.html}
+    </div>
+</Article>

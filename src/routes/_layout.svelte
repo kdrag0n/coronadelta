@@ -12,8 +12,7 @@
     main {
         position: relative;
         box-sizing: border-box;
-        margin: 0 auto;
-        @apply max-w-3xl;
+        @apply p-6;
     }
 </style>
 
