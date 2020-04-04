@@ -3,7 +3,7 @@ title: "How to wash your hands"
 description: "Learn how exactly you should wash your hands to minimize your chance of getting coronavirus."
 ---
 
-You should always wash your hands often and thoroughly, but this is especially important in the midst of a pandemic. Here's how to minimize your chance of getting coronavirus by washing your hands correctly.
+You should always wash your hands often and thoroughly, but it's especially important in the midst of a pandemic. Here's how to minimize your chance of getting coronavirus by washing your hands correctly.
 
 ## 1. Wet your hands
 
