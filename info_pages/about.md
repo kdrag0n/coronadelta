@@ -28,6 +28,12 @@ Got questions, ideas, or just want to say something? You can contact me at [cont
 
 This website is open-source on [GitHub](https://github.com/kdrag0n/coronadelta)! Feel free to contribute if you know a thing or two about web development.
 
+## Why don't you track recoveries?
+
+There doesn't appear to be any good sources for recovery numbers. In addition, many countries aren't keeping track of this information, so a large amount of recoveries won't be accounted for. I decided that it's better to omit this entirely than to be misleading by showing partial/incomplete data that contains a plethora of holes.
+
+Even if all countries provide recovery numbers as well as they can, it's unlikely that medical officials have the time to keep tags on, and there isn't a good automatic reporting system yet — which means that even official numbers are most likely skewed by a significant margin. Most people will recover fine and just don't want to deal with the virus ever again, so they aren't incentivized to call in and report their status.
+
 ## Attributions
 
 This site was built with these open-source libraries:
