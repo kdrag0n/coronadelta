@@ -47,7 +47,7 @@
     }
 
     .content :global(img) {
-        max-width: 24rem;
+        max-width: 20rem;
         padding: 2rem;
         margin: 0 auto;
         display: block;
