@@ -4,7 +4,11 @@ description: "CoronaDelta is an all-in-one source for coronavirus stats, creativ
 index: false
 ---
 
-This site was made by [kdrag0n](https://kdrag0n.dev/), a passionate developer and high school student. It's meant to help everyone stay informed and make educated decisions for themselves through insightful visualizations and other information that isn't well-known.
+CoronaDelta is an all-in-one source for **coronavirus stats**, **creative visualizations**, and **concise information**. We strive to help everyone stay informed and make educated decisions for themselves through insightful visualizations and other less well-known information.
+
+## Author
+
+This site was made by [Danny Lin (kdrag0n)](https://kdrag0n.dev/), a passionate developer and high school student.
 
 ## Why?
 
