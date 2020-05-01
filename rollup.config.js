@@ -36,7 +36,8 @@ export default {
             }),
             resolve({
                 browser: true,
-                dedupe: ['svelte']
+                dedupe: ['svelte'],
+                preferBuiltins: false
             }),
             commonjs(),
             json({
@@ -64,7 +65,15 @@ export default {
                 module: true
             }),
 
-            ignore(['moment'])
+            ignore(['moment']),
+
+            replace({
+                '"use strict";': '',
+                "'use strict';": '',
+                'this.document': 'document',
+                'this.navigator': 'navigator',
+                'this, "requestAnimationFrame"': 'window, "requestAnimationFrame"'
+            })
         ],
 
         onwarn,

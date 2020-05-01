@@ -1,16 +1,8 @@
 import { writable as writableMem, readable as readableMem } from 'svelte/store';
 import { writable as writableLocal } from 'svelte-persistent-store';
-import initData from '../static/timeseries_data.json';
 
-export const data = writableMem(initData);
-export const useLog = writableLocal(true);
+export const scale = writableLocal("log");
 export const tooltipShown = writableMem(false);
-
-const dataPath = "/timeseries_data.json";
-export async function updateData() {
-    let resp = await fetch(dataPath);
-    data.set(await resp.json());
-}
 
 let _chartRenders = [];
 export const chartRenders = readableMem(_chartRenders);

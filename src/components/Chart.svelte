@@ -46,7 +46,8 @@
     export let height = "310px";
 
     export let data;
-    export let log = false;
+    export let scale;
+    $: log = scale == "log";
 
     let canvas;
     let chart;
